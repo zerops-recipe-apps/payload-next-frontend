@@ -21,7 +21,7 @@ zerops:
       readinessCheck:
         httpGet:
           port: 3000
-          path: /
+          path: /api/health
     run:
       base: nodejs@24
       ports:
@@ -33,6 +33,10 @@ zerops:
         NEXT_PUBLIC_PAYLOAD_URL: ${API_URL}
         PAYLOAD_URL: ${API_URL}
       start: node .next/standalone/bin/run.mjs
+      healthCheck:
+        httpGet:
+          port: 3000
+          path: /api/health
 
   - setup: dev
     build:
