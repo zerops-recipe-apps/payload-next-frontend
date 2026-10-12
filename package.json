@@ -1,0 +1,51 @@
+{
+  "name": "payload-next-frontend",
+  "version": "1.0.0",
+  "description": "Next.js storefront for the payload-next Zerops recipe (Payload CMS REST API).",
+  "author": "Zerops",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerops-recipe-apps/payload-next-frontend.git"
+  },
+  "homepage": "https://github.com/zerops-recipe-apps/payload-next-frontend",
+  "bugs": {
+    "url": "https://github.com/zerops-recipe-apps/payload-next-frontend/issues"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "prebuild": "node scripts/generate-build-info.js",
+    "build": "next build",
+    "dev": "next dev",
+    "start": "node .next/standalone/server.js"
+  },
+  "dependencies": {
+    "next": "^16.2.11",
+    "pg": "^8.13.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/pg": "^8.11.11",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "esbuild": "^0.25.0",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "postcss": ">=8.5.10",
+    "sharp": ">=0.35.0"
+  },
+  "keywords": [
+    "nextjs",
+    "zerops",
+    "ssr",
+    "standalone",
+    "postgresql"
+  ]
+}

@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://api.app-prg1.zerops.io/api/rest/public/settings/zerops-yaml-json-schema.json
+#
+# Next.js storefront (reads Payload REST API). Setups: `prod` and `dev`.
+
+zerops:
+  - setup: prod
+    build:
+      base: nodejs@24
+      envVariables:
+        NEXT_PUBLIC_PAYLOAD_URL: https://payload-${zeropsSubdomainHost}-3000.prg1.zerops.app
+      buildCommands:
+        - npm ci --include=dev
+        - npm run build
+      deployFiles:
+        - .next/standalone
+        - .next/static
+        - public
+      cache:
+        - node_modules
+    deploy:
+      readinessCheck:
+        httpGet:
+          port: 3000
+          path: /
+    run:
+      base: nodejs@24
+      ports:
+        - port: 3000
+          httpSupport: true
+      envVariables:
+        NODE_ENV: production
+        NEXT_PUBLIC_PAYLOAD_URL: ${API_URL}
+      start: node .next/standalone/server.js
+
+  - setup: dev
+    build:
+      base: nodejs@24
+      os: ubuntu
+      buildCommands:
+        - npm install
+      deployFiles: ./
+      cache:
+        - node_modules
+    run:
+      base: nodejs@24
+      os: ubuntu
+      ports:
+        - port: 3000
+          httpSupport: true
+      envVariables:
+        NODE_ENV: development
+        NEXT_PUBLIC_PAYLOAD_URL: ${DEV_API_URL}
+      start: zsc noop --silent
