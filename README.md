@@ -2,7 +2,7 @@
 
 Next.js SSR storefront for [zerops-recipe-apps/payload](https://github.com/zerops-recipe-apps/payload). Deploy with `zeropsSetup: dev` or `prod` from [`zeropsio/recipes/payload-next`](https://github.com/zeropsio/recipes/tree/main/payload-next).
 
-Set `NEXT_PUBLIC_PAYLOAD_URL` to your Payload public URL at build time. The demo reads content from Payload REST (`/api/*`).
+Set `NEXT_PUBLIC_PAYLOAD_URL` to your Payload public URL at build and runtime. The demo reads Payload REST on the **Next server** (`/api/*`), so the CMS and storefront can live on different hostnames without CORS issues.
 
 ## Local dev
 

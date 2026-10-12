@@ -29,8 +29,10 @@ zerops:
           httpSupport: true
       envVariables:
         NODE_ENV: production
+        PORT: "3000"
         NEXT_PUBLIC_PAYLOAD_URL: ${API_URL}
-      start: node .next/standalone/server.js
+        PAYLOAD_URL: ${API_URL}
+      start: node .next/standalone/bin/run.mjs
 
   - setup: dev
     build:

@@ -18,34 +18,25 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "prebuild": "node scripts/generate-build-info.js",
-    "build": "next build",
+    "build": "next build && node scripts/prepare-standalone.mjs",
     "dev": "next dev",
-    "start": "node .next/standalone/server.js"
+    "start": "node scripts/start-standalone.mjs"
   },
   "dependencies": {
-    "next": "^16.2.11",
-    "pg": "^8.13.3",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "next": "16.2.11",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@types/node": "^26.1.1",
-    "@types/pg": "^8.11.11",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "esbuild": "^0.25.0",
+    "@types/node": "22.15.21",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
     "typescript": "5.9.3"
-  },
-  "overrides": {
-    "postcss": ">=8.5.10",
-    "sharp": ">=0.35.0"
   },
   "keywords": [
     "nextjs",
+    "payload",
     "zerops",
-    "ssr",
-    "standalone",
-    "postgresql"
+    "headless-cms"
   ]
 }

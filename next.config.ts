@@ -1,9 +1,10 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  // Standalone mode bundles all runtime dependencies using
-  // @vercel/nft import tracing — no node_modules needed at runtime.
   output: 'standalone',
+  async redirects() {
+    return [{ source: '/favicon.ico', destination: '/icons.svg', permanent: false }]
+  },
 }
 
 export default nextConfig
